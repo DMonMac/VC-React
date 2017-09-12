@@ -8,24 +8,33 @@ class Product extends Component {
     this.state = {qty:0}; // initial state
     this.buy = this.buy.bind(this);
     this.show = this.show.bind(this);
+    this.minus = this.minus.bind(this);
   }
   buy(){
     this.setState({qty: this.state.qty+1});
     this.props.handleTotal(this.props.price);
-    alert("You are buying "+ this.props.name);
+    //alert("You are buying "+ this.props.name);
   }
 
   show(){
     this.props.handleShow(this.props.name);
   }
 
+  minus(){
+    this.setState({qty: this.state.qty -1});
+    this.props.handleTotal(-this.props.price);
+  }
+
   render() {
     return (
       <div>
         <p>{this.props.name} = ${this.props.price}</p>
-          <button onClick={this.buy}>Buy</button>
-          <button onClick={this.show}>Show</button>
+          <button className="btn btn-primary" onClick={this.buy}>+</button>
+          <button className="btn btn-primary" onClick={this.show}>Show</button>
+          <button className="btn btn-primary" onClick={this.minus}>-</button>
           <h3>{this.state.qty}</h3>
+          <h3>${this.state.qty*this.props.price}</h3>
+          <hr/>
       </div>
     );
   }
@@ -50,7 +59,7 @@ class ProductForm extends Component {
     e.preventDefault(); //prevents submit default (refresh)
     var product = {
       name:this.refs.name.value,
-      price:parseInt(this.refs.price.value)
+      price:parseInt(this.refs.price.value) || 0
     };
     this.props.handleCreate(product);
     alert("Added " + product.name);
@@ -59,11 +68,11 @@ class ProductForm extends Component {
   }
   render() {
     return(
-      <form onSubmit={this.submit}>
-        <input type ="text" placeholder="Product Name" ref="name"/>
-        <input type ="text" placeholder="Product Price" ref="price"/>
+      <form onSubmit={this.submit} class="form-group">
+        <input className="form-control" type ="text" placeholder="Product Name" ref="name"/>
+        <input className="form-control" type ="text" placeholder="Product Price" ref="price"/>
         <br/>
-        <button>Create Product</button>
+        <button className="btn btn-primary">Create Product</button>
       </form>
     );
   }
