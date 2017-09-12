@@ -56,7 +56,7 @@ class ProductForm extends Component {
     this.submit = this.submit.bind(this);
   }
   submit(e) {
-    e.preventDefault(); //prevents submit default (refresh)
+    e.preventDefault(); //prevents submit default (refresh, which resets everything)
     var product = {
       name:this.refs.name.value,
       price:parseInt(this.refs.price.value) || 0
