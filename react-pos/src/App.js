@@ -8,7 +8,7 @@ class Item extends Component {
     this.state = {qty:0};
   }
 
-  changeCount(ctr){
+  changeAmt(ctr){
     this.setState({
       qty: this.state.qty + ctr
     });
@@ -19,14 +19,14 @@ class Item extends Component {
       <div>
         Qty: {this.state.qty}
         <br/>
-        <button onClick={ this.changeCount.bind(this, 1) }>+</button>
-        <button onClick={ this.changeCount.bind(this, -1) }>-</button>
+        <button onClick={ this.changeAmt.bind(this, 1) }>+</button>
+        <button onClick={ this.changeAmt.bind(this, -1) }>-</button>
       </div>
     )
   }
 }
 
-
+class
 
 
 
