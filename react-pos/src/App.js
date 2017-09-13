@@ -8,19 +8,34 @@ class Item extends Component {
     this.state = {qty:0};
   }
 
-  changeAmt(ctr){
-    this.setState({
-      qty: this.state.qty + ctr
-    });
+  changeQty(ctr){
+    if (this.state.qty == 0){
+      if (ctr<0){
+        alert("You haven't added this item yet.");
+      } else {
+        this.setState({
+          qty: this.state.qty + ctr
+        });
+      }
+    } else {
+        this.setState({
+          qty: this.state.qty + ctr
+        });
+      }
   }
+
+
+
+
+
 
   render() {
     return (
       <div>
         Qty: {this.state.qty}
         <br/>
-        <button onClick={ this.changeAmt.bind(this, 1) }>+</button>
-        <button onClick={ this.changeAmt.bind(this, -1) }>-</button>
+        <button onClick={ this.changeQty.bind(this, 1) }>+</button>
+        <button onClick={ this.changeQty.bind(this, -1) }>-</button>
       </div>
     )
   }
