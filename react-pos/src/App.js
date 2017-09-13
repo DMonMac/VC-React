@@ -15,6 +15,7 @@ class Item extends Component {
         this.setState({
           qty: this.state.qty + ctr
         });
+        this.props.handleCalcTotal(this.props.price*ctr)
       }
   }
 
@@ -50,9 +51,9 @@ class ItemList extends Component {
       item_db: [
         {name: "Andrew Lloyd", price: 213},
         {name: "eyeFone Ate", price: 1234},
-        {name: "Some Tsung", price: 123},
+        {name: "Sam Tsung", price: 123},
         {name: "CopyKo", price: 12},
-        {name: "Share", price: 142}
+        {name: "Cher", price: 142}
       ]
     };
     this.calcTotal = this.calcTotal.bind(this);
@@ -63,12 +64,14 @@ class ItemList extends Component {
   }
 
   render() {
+    var item_list_component = this;
     var items = this.state.item_db.map(
       function(item){
         return(
           <Item
             name = {item.name}
             price = {item.price}
+            handleCalcTotal = {item_list_component.calcTotal}
           />
         );
       }
@@ -77,6 +80,7 @@ class ItemList extends Component {
       <div>
         {items}
         <Breakdown
+
           price_total = {this.state.price_total}
         />
 
@@ -92,10 +96,12 @@ class App extends Component {
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
           <h2>React POS</h2>
+          <p>
+            App that computes your expenses for you ;)
+          <br/><br/>
+          </p>
+
         </div>
-        <p className="App-intro">
-          App that computes your expenses for you ;)
-        </p>
 
         <ItemList/>
 
