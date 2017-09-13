@@ -37,7 +37,8 @@ class Breakdown extends Component {
   render() {
     return (
       <div>
-        <h3>Total balance: ${this.props.price_total}</h3>
+        <h3>Breakdown:</h3>
+        <p>Total balance: ${this.props.price_total}</p>
       </div>
     )
   }
@@ -80,7 +81,6 @@ class ItemList extends Component {
       <div>
         {items}
         <Breakdown
-
           price_total = {this.state.price_total}
         />
 
