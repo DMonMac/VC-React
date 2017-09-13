@@ -9,14 +9,8 @@ class Item extends Component {
   }
 
   changeQty(ctr){
-    if (this.state.qty === 0){
-      if (ctr<0){
+    if (this.state.qty === 0 && ctr<0){
         alert("You haven't added this item yet.");
-      } else {
-        this.setState({
-          qty: this.state.qty + ctr
-        });
-      }
     } else {
         this.setState({
           qty: this.state.qty + ctr
@@ -37,19 +31,35 @@ class Item extends Component {
   }
 }
 
+class Breakdown extends Component {
+
+  render() {
+    return (
+      <div>
+        <h3>Total balance: ${this.props.price_total}</h3>
+      </div>
+    )
+  }
+}
+
 class ItemList extends Component {
   constructor(props){
     super(props);
     this.state={
-      total:0,
+      price_total:0,
       item_db: [
-        {name: "Andooroid", price: 213},
+        {name: "Andrew Lloyd", price: 213},
         {name: "eyeFone Ate", price: 1234},
-        {name: "SomeSung", price: 123},
+        {name: "Some Tsung", price: 123},
         {name: "CopyKo", price: 12},
         {name: "Share", price: 142}
       ]
     };
+    this.calcTotal = this.calcTotal.bind(this);
+  }
+
+  calcTotal(price) {
+    this.setState({price_total: this.state.price_total + price});
   }
 
   render() {
@@ -66,6 +76,10 @@ class ItemList extends Component {
     return(
       <div>
         {items}
+        <Breakdown
+          price_total = {this.state.price_total}
+        />
+
       </div>
     )
   }
