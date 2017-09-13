@@ -26,7 +26,6 @@ class Item extends Component {
   }
 }
 
-class
 
 
 
