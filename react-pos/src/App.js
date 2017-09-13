@@ -2,6 +2,35 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+class Item extends Component {
+  constructor(props){
+    super(props);
+    this.state = {qty:0};
+  }
+
+  changeCount(ctr){
+    this.setState({
+      qty: this.state.qty + ctr
+    });
+  }
+
+  render() {
+    return (
+      <div>
+        Qty: {this.state.qty}
+        <br/>
+        <button onClick={ this.changeCount.bind(this, 1) }>+</button>
+        <button onClick={ this.changeCount.bind(this, -1) }>-</button>
+      </div>
+    )
+  }
+}
+
+
+
+
+
+
 class App extends Component {
   render() {
     return (
@@ -11,8 +40,10 @@ class App extends Component {
           <h2>React POS</h2>
         </div>
         <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
+          App that computes your expenses for you XD.
         </p>
+
+        <Item />
       </div>
     );
   }
