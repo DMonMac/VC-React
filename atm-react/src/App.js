@@ -35,6 +35,7 @@ class CurrBal extends Component {
     return(
       <div>
         Balance: {this.props.bal} PhP
+        <br/><br/>
       </div>
     )
   }
@@ -51,14 +52,18 @@ class Transaction extends Component {
 
   deposit(e){
     e.preventDefault();
-    this.setState({bal: this.state.bal + parseInt(this.refs.deposit.value)});
-    alert("Deposited "+ this.refs.deposit.value + " PhP");
+    this.setState({bal: this.state.bal + parseInt(this.refs.amt.value)});
+    alert("Deposited "+ this.refs.amt.value + " PhP");
   }
 
   withdraw(e){
     e.preventDefault();
-    this.setState({bal: this.state.bal - parseInt(this.refs.withdraw.value)});
-    alert("Withdrew "+ this.refs.withdraw.value + " PhP");
+    if (parseInt(this.refs.amt.value)<this.state.bal) {
+      this.setState({bal: this.state.bal - parseInt(this.refs.amt.value)});
+      alert("Withdrew "+ this.refs.amt.value + " PhP");
+    } else {
+        alert("You can't withdraw more than your balance.");
+    }
   }
 
   render(){
@@ -71,34 +76,18 @@ class Transaction extends Component {
 
         <CurrBal bal={this.state.bal}/>
 
-        <form
-          onSubmit={this.deposit}>
+        <form>
           <label>
-            Deposit:
+            Amount:
             <input
               type="number"
               min="0"
               placeholder="Enter PhP amount here"
-              ref="deposit"
+              ref="amt"
             />
           </label>
-          <button>Deposit</button>
-        </form>
-
-        <form
-          onSubmit={this.withdraw}
-        >
-          <label>
-            Withdraw:
-            <input
-              type="number"
-              min="0"
-              max={this.state.bal}
-              placeholder="Enter PhP amount here"
-              ref="withdraw"
-            />
-          </label>
-          <button>Withdraw</button>
+          <button onClick={this.deposit}>Deposit</button>
+          <button onClick={this.withdraw}>Withdraw</button>
         </form>
 
       </div>
