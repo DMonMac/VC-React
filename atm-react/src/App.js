@@ -61,7 +61,7 @@ class Transaction extends Component {
       this.setState({bal: this.state.bal - parseInt(this.refs.amt.value)});
       alert("Withdrew "+ this.refs.amt.value + " PhP");
     } else {
-        alert("You can't withdraw more than your balance.");
+        alert("Insufficient balance");
     }
   }
 
