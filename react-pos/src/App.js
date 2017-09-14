@@ -22,19 +22,21 @@ class Item extends Component {
 
   render() {
     return (
-      <div>
+      <div class="thumbnail">
         <img
           src={process.env.PUBLIC_URL + 'img/img'+ this.props.img_id +'.png'}
-          class="img-thumbnail"
           alt="Item Image"
-          width="150"
-          height="150"
+          width="100px"
+          height="100px"
         />
-        <p>{this.props.name} = ${this.props.price}</p>
-        Qty: {this.state.qty}
-        <br/>
-        <button onClick={ this.changeQty.bind(this, 1) }>+</button>
-        <button onClick={ this.changeQty.bind(this, -1) }>-</button>
+        <div class="caption">
+          <h5>{this.props.name}</h5>
+          <p>Price: ${this.props.price}</p>
+          <p>Qty: {this.state.qty}</p>
+            <button onClick={ this.changeQty.bind(this, 1) }>+</button>
+            <button onClick={ this.changeQty.bind(this, -1) }>-</button>
+
+        </div>
       </div>
     )
   }
@@ -87,13 +89,21 @@ class ItemList extends Component {
       }
     );
     return(
-      <div>
-        {items}
-        <Breakdown
-          price_total = {this.state.price_total}
-        />
-
+      <div className="row">
+        <div
+          className="col-sm-3"
+        >
+          <Breakdown
+            price_total = {this.state.price_total}
+          />
+        </div>
+        <div
+          className="col-sm-9"
+          >
+            {items}
+        </div>
       </div>
+
     )
   }
 }
@@ -101,7 +111,7 @@ class ItemList extends Component {
 class App extends Component {
   render() {
     return (
-      <div className="App">
+      <div className="container-fluid">
         <div className="jumbotron-fluid">
           <img src={logo} className="App-logo" alt="logo" />
           <h2>React POS</h2>
@@ -109,10 +119,11 @@ class App extends Component {
             App that computes your expenses for you ;)
           <br/><br/>
           </p>
-
         </div>
 
         <ItemList/>
+
+
 
       </div>
     );
