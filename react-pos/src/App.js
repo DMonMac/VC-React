@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
+
 class Item extends Component {
   constructor(props){
     super(props);
@@ -22,6 +23,7 @@ class Item extends Component {
   render() {
     return (
       <div>
+        <img src={process.env.PUBLIC_URL + 'img/img'+ this.props.img_id +'.png'} />
         <p>{this.props.name} = ${this.props.price}</p>
         Qty: {this.state.qty}
         <br/>
@@ -37,8 +39,8 @@ class Breakdown extends Component {
   render() {
     return (
       <div>
-        <h3>Breakdown:</h3>
-        <p>Total balance: ${this.props.price_total}</p>
+        <h4>Breakdown:</h4>
+        <p>Total price: ${this.props.price_total}</p>
       </div>
     )
   }
@@ -50,11 +52,11 @@ class ItemList extends Component {
     this.state={
       price_total:0,
       item_db: [
-        {name: "Andrew Lloyd", price: 213},
-        {name: "eyeFone Ate", price: 1234},
-        {name: "Sam Tsung", price: 123},
-        {name: "CopyKo", price: 12},
-        {name: "Cher", price: 142}
+        {name: "Andrew Lloyd", price: 213, img_id: "01"},
+        {name: "eyeFone Ate", price: 1234, img_id: "02"},
+        {name: "Sam Tsung", price: 123, img_id: "03"},
+        {name: "CopyKo", price: 12, img_id: "04"},
+        {name: "Cher", price: 142, img_id: "05"}
       ]
     };
     this.calcTotal = this.calcTotal.bind(this);
@@ -73,6 +75,7 @@ class ItemList extends Component {
             name = {item.name}
             price = {item.price}
             handleCalcTotal = {item_list_component.calcTotal}
+            img_id = {item.img_id}
           />
         );
       }
@@ -93,7 +96,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <div className="App-header">
+        <div className="jumbotron-fluid">
           <img src={logo} className="App-logo" alt="logo" />
           <h2>React POS</h2>
           <p>
