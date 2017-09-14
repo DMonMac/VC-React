@@ -23,7 +23,13 @@ class Item extends Component {
   render() {
     return (
       <div>
-        <img src={process.env.PUBLIC_URL + 'img/img'+ this.props.img_id +'.png'} />
+        <img
+          src={process.env.PUBLIC_URL + 'img/img'+ this.props.img_id +'.png'}
+          class="img-thumbnail"
+          alt="Item Image"
+          width="150"
+          height="150"
+        />
         <p>{this.props.name} = ${this.props.price}</p>
         Qty: {this.state.qty}
         <br/>
