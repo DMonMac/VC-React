@@ -52,7 +52,7 @@ class Breakdown extends Component {
     return (
       <div>
         <h4>Breakdown:</h4>
-
+        <p>{this.props.name} ({this.props.qty}) = ${this.props.qty*this.props.price}</p>
         <p>Total price: ${this.props.price_total}</p>
       </div>
     )
