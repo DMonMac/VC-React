@@ -1,3 +1,4 @@
+
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
@@ -22,20 +23,23 @@ class Item extends Component {
 
   render() {
     return (
-      <div class="thumbnail">
-        <img
-          src={process.env.PUBLIC_URL + 'img/img'+ this.props.img_id +'.png'}
-          alt="Item Image"
-          width="100px"
-          height="100px"
-        />
-        <div class="caption">
+      <div className="col col-md-3 col-xs-12">
+        <div className="thumbnail">
+          <a href="#" onClick={this.changeQty.bind(this, 1)}>
+            <img
+              src={process.env.PUBLIC_URL + 'img/img'+ this.props.img_id +'.png'}
+              alt="Item"
+              width="100px"
+              height="100px"
+            />
+          </a>
+        </div>
+
+        <div className="caption">
           <h5>{this.props.name}</h5>
           <p>Price: ${this.props.price}</p>
-          <p>Qty: {this.state.qty}</p>
-            <button onClick={ this.changeQty.bind(this, 1) }>+</button>
-            <button onClick={ this.changeQty.bind(this, -1) }>-</button>
-
+          <p>Quantity: {this.state.qty}</p>
+          <button onClick={ this.changeQty.bind(this, -1) }>-</button>
         </div>
       </div>
     )
@@ -48,6 +52,7 @@ class Breakdown extends Component {
     return (
       <div>
         <h4>Breakdown:</h4>
+
         <p>Total price: ${this.props.price_total}</p>
       </div>
     )
@@ -76,7 +81,7 @@ class ItemList extends Component {
 
   render() {
     var item_list_component = this;
-    var items = this.state.item_db.map(
+    var item_buttons = this.state.item_db.map(
       function(item){
         return(
           <Item
@@ -90,20 +95,19 @@ class ItemList extends Component {
     );
     return(
       <div className="row">
-        <div
-          className="col-sm-3"
-        >
+        <div className="col-3">
+
           <Breakdown
             price_total = {this.state.price_total}
           />
+
         </div>
-        <div
-          className="col-sm-9"
-          >
-            {items}
+        <div className="col-9">
+          <div className = "row">
+            {item_buttons}
+          </div>
         </div>
       </div>
-
     )
   }
 }
@@ -111,6 +115,7 @@ class ItemList extends Component {
 class App extends Component {
   render() {
     return (
+
       <div className="container-fluid">
         <div className="jumbotron-fluid">
           <img src={logo} className="App-logo" alt="logo" />
@@ -122,8 +127,6 @@ class App extends Component {
         </div>
 
         <ItemList/>
-
-
 
       </div>
     );
