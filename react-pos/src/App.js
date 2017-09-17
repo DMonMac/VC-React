@@ -25,14 +25,14 @@ class Item extends Component {
     return (
       <div className="col col-md-3 col-xs-12">
         <div className="thumbnail">
-          <a href="#" onClick={this.changeQty.bind(this, 1)}>
+          <button onClick={this.changeQty.bind(this, 1)}>
             <img
               src={process.env.PUBLIC_URL + 'img/img'+ this.props.img_id +'.png'}
               alt="Item"
               width="100px"
               height="100px"
             />
-          </a>
+          </button>
         </div>
 
         <div className="caption">
