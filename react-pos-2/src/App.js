@@ -26,6 +26,17 @@ class List extends Component {
   }
 }
 
+class Breakdown extends Component {
+  render(){
+    return (
+      <div>
+      Item Name (Qty) = $ Price <button>-</button>
+      <h4>Total: $ Total Price</h4>
+      </div>
+    )
+  }
+}
+
 
 
 class App extends Component {
@@ -48,8 +59,6 @@ class App extends Component {
     this.setState({price_total: this.state.price_total + price});
   }
 
-
-
   render() {
     return (
       <div className="container-fluid">
@@ -63,10 +72,11 @@ class App extends Component {
         </div>
 
         <div className="row">
-          <div className="col-3">
+          <div className="col-4">
             <h3>Breakdown</h3>
+            <Breakdown/>
           </div>
-          <div className="col-9">
+          <div className="col-8">
             <h3>Item List</h3>
             <div className = "row">
               <List/>
