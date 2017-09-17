@@ -4,79 +4,41 @@ import './App.css';
 
 
 class Item extends Component {
-  constructor(props){
-    super(props);
-    this.state = {qty:0};
-  }
-
-  changeQty(ctr){
-    if (this.state.qty === 0 && ctr<0){
-        alert("You haven't added this item yet.");
-    } else {
-        this.setState({
-          qty: this.state.qty + ctr
-        });
-        this.props.handleCalcTotal(this.props.price*ctr)
-      }
-  }
-
-  showBreakdown(){
-    return(
-      <div>
-        <h5>{this.props.name}</h5>
-      </div>
-    )
-  }
-
-  render() {
+  render(){
     return (
       <div className="col col-md-3 col-xs-12">
-        <div className="thumbnail">
-          <button onClick={this.changeQty.bind(this, 1)}>
-            <img
-              src={process.env.PUBLIC_URL + 'img/img'+ this.props.img_id +'.png'}
-              alt="Item"
-              width="100px"
-              height="100px"
-            />
-          </button>
-        </div>
-
-        <div className="caption">
-          <h5>{this.props.name}</h5>
-          <p>Price: ${this.props.price}</p>
-          <p>Quantity: {this.state.qty}</p>
-          <button onClick={ this.changeQty.bind(this, -1) }>-</button>
+        <button>Item Image</button>
+        <div>
+          Price: $
         </div>
       </div>
     )
   }
 }
 
-class Breakdown extends Component {
-
-  render() {
+class List extends Component {
+  render(){
     return (
       <div>
-        <h4>Breakdown:</h4>
-        <p>{this.props.name} ({this.props.qty}) = ${this.props.qty*this.props.price}</p>
-        <p>Total price: ${this.props.price_total}</p>
+      <Item/>
       </div>
     )
   }
 }
 
-class ItemList extends Component {
+
+
+class App extends Component {
   constructor(props){
     super(props);
     this.state={
       price_total:0,
       item_db: [
-        {name: "Andrew Lloyd", price: 213, img_id: "01"},
-        {name: "eyeFone Ate", price: 1234, img_id: "02"},
-        {name: "Sam Tsung", price: 123, img_id: "03"},
-        {name: "CopyKo", price: 12, img_id: "04"},
-        {name: "Cher", price: 142, img_id: "05"}
+        {name: "Andrew Lloyd", price: 213, img_id: "01", qty: 0},
+        {name: "eyeFone Ate", price: 1234, img_id: "02", qty: 0},
+        {name: "Sam Tsung", price: 123, img_id: "03", qty: 0},
+        {name: "CopyKo", price: 12, img_id: "04", qty: 0},
+        {name: "Cher", price: 142, img_id: "05", qty: 0}
       ]
     };
     this.calcTotal = this.calcTotal.bind(this);
@@ -86,42 +48,10 @@ class ItemList extends Component {
     this.setState({price_total: this.state.price_total + price});
   }
 
-  render() {
-    var item_list_component = this;
-    var item_buttons = this.state.item_db.map(
-      function(item){
-        return(
-          <Item
-            name = {item.name}
-            price = {item.price}
-            handleCalcTotal = {item_list_component.calcTotal}
-            img_id = {item.img_id}
-          />
-        );
-      }
-    );
-    return(
-      <div className="row">
-        <div className="col-3">
 
-          <Breakdown
-          />
 
-        </div>
-        <div className="col-9">
-          <div className = "row">
-            {item_buttons}
-          </div>
-        </div>
-      </div>
-    )
-  }
-}
-
-class App extends Component {
   render() {
     return (
-
       <div className="container-fluid">
         <div className="jumbotron-fluid">
           <img src={logo} className="App-logo" alt="logo" />
@@ -132,7 +62,17 @@ class App extends Component {
           </p>
         </div>
 
-        <ItemList/>
+        <div className="row">
+          <div className="col-3">
+            <h3>Breakdown</h3>
+          </div>
+          <div className="col-9">
+            <h3>Item List</h3>
+            <div className = "row">
+              <List/>
+            </div>
+          </div>
+        </div>
 
       </div>
     );
