@@ -7,9 +7,20 @@ class Item extends Component {
   render(){
     return (
       <div className="col col-md-3 col-xs-12">
-        <button>{this.props.name}</button>
-        <div>
-          Price: $ {this.props.price}
+        <div className="thumbnail">
+          <button>
+            <img
+              src={process.env.PUBLIC_URL + 'img/img'+ this.props.img_id +'.png'}
+              alt="Item Image"
+              width="100px"
+              height="100px"
+            />
+          </button>
+        </div>
+
+        <div className="caption">
+          <h5>{this.props.name}</h5>
+          <p>Price: ${this.props.price}</p>
         </div>
       </div>
     )
