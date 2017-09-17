@@ -7,9 +7,9 @@ class Item extends Component {
   render(){
     return (
       <div className="col col-md-3 col-xs-12">
-        <button>Item Image</button>
+        <button>{this.props.name}</button>
         <div>
-          Price: $
+          Price: $ {this.props.price}
         </div>
       </div>
     )
@@ -20,7 +20,7 @@ class List extends Component {
   render(){
     return (
       <div>
-      <Item/>
+
       </div>
     )
   }
@@ -30,7 +30,7 @@ class Breakdown extends Component {
   render(){
     return (
       <div>
-      Item Name (Qty) = $ Price <button>-</button>
+      Item Name (Qty) = $ Price*Qty <button>-qty by 1</button>
       <h4>Total: $ Total Price</h4>
       </div>
     )
@@ -60,6 +60,17 @@ class App extends Component {
   }
 
   render() {
+    var item_buttons = this.state.item_db.map(
+      function(item){
+        return(
+          <Item
+            name = {item.name}
+            price = {item.price}
+            img_id = {item.img_id}
+          />
+        );
+      }
+    );
     return (
       <div className="container-fluid">
         <div className="jumbotron-fluid">
@@ -79,7 +90,7 @@ class App extends Component {
           <div className="col-8">
             <h3>Item List</h3>
             <div className = "row">
-              <List/>
+              {item_buttons}
             </div>
           </div>
         </div>
