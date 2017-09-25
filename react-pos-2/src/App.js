@@ -4,7 +4,6 @@ import './App.css';
 
 
 class Item extends Component {
-
   render(){
     return (
       <div className="col col-md-3 col-xs-12">
@@ -41,6 +40,7 @@ class Item extends Component {
 
 class Breakdown extends Component {
   render(){
+
     return (
           <div>
             <button>-</button>
@@ -63,7 +63,7 @@ class App extends Component {
         {name: "Sam Tsung", price: 123, img_id: "03", qty: 2},
         {name: "CopyKo", price: 12, img_id: "04", qty: 0},
         {name: "Cher", price: 142, img_id: "05", qty: 3}
-      ]
+      ],
     };
     this.calcTotal = this.calcTotal.bind(this);
   }
@@ -91,6 +91,7 @@ class App extends Component {
     var item_breakdown = this.state.item_db.map(
       function(item){
         if (item.qty > 0) {
+          func.calcTotal(item.qty*item.price)
           return(
             <Breakdown
               name = {item.name}
