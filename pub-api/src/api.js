@@ -12,25 +12,21 @@ class DogAPI extends Component {
     this.submit = this.submit.bind(this);
   }
 
-    submit(event) {
-      event.preventDefault(); //prevents submit default (refresh, which resets everything)
-      this.setState({breed: this.refs.breed.value})
-      this.componentDidMount();
-    }
-
-  componentDidMount(){
-    let url = `https://dog.ceo/api/breed/${this.state.breed}/images/random`
+  submit(event){
+    event.preventDefault();
+    this.setState({breed: this.refs.breed.value})
+    let url = `https://dog.ceo/api/breed/${this.refs.breed.value}/images/random`
     fetch(url)
-      .then(d => d.json())
-      .then(d => {
+      .then(data => data.json())
+      .then(data => {
         this.setState({
-          breedData: d
+          breedData: data
         })
       })
+    if(!this.state.breedData) return <p>Pls wait...</p>
   };
 
   render() {
-    //if(!this.state.breedData) return <p>Pls wait...</p>
     return (
       <div>
         <h1>Dog API</h1>
@@ -42,7 +38,7 @@ class DogAPI extends Component {
           <h2>{this.state.breed}</h2>
           <img
             src={this.state.breedData.message}
-            alt="Breed not available..."
+            alt={this.state.breed}
             width=""
             height=""
           />
