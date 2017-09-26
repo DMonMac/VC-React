@@ -1,26 +1,35 @@
 import React, { Component } from 'react';
 
-const url = name => 'https://robohash.org/${name}'
+const url = breed => `https://dog.ceo/api/breed/${breed}/images/random`
 
 class API extends Component {
+  constructor(props){
+    super(props)
+    this.state = {}
+  }
 
   componentDidMount(){
 
-    fetch(url(this.props.name))
+    fetch(url(this.props.breed))
       .then(d => d.json())
       .then(d => {
         this.setState({
-          robohashData: d
+          breedData: d
         });
       });
   };
 
   render() {
+    if(!this.state.breedData) return <p>Pls wait...</p>
     return (
       <div>
-        <p>Loading...</p>
-        <h1>ROBOHASH</h1>
-        <ul id='robohashes'></ul>
+        <h1>{this.props.breed}</h1>
+        <img
+          src={this.state.breedData.message}
+          alt={this.props.breed}
+          width=""
+          height=""
+        />
       </div>
     );
   }
