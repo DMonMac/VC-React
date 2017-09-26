@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-//const url = breed => `https://dog.ceo/api/breed/${breed}/images/random` // This should be rendering JSON ready files
+const breedsURL = breed => `https://dog.ceo/api/breeds/list` // This should be rendering JSON ready files
 
 class DogAPI extends Component {
   constructor(props){
@@ -23,25 +23,36 @@ class DogAPI extends Component {
           breedImgData: imgData
         })
       })
-    if(!this.state.breedData) return <p>Pls wait...</p>
   };
+
+
+
+  showImg(){
+    return (
+      <div>
+        <h2>{this.state.breed}</h2>
+        <img
+          src={this.state.breedImgData.message}
+          alt="Breed not available.."
+          width=""
+          height=""
+        />
+      </div>
+    )
+  }
 
   render() {
     return (
       <div>
-        <h1>Dog API</h1>
-        <form onSubmit={this.submit}>
-          <input type ="text" placeholder="Enter breed here" ref="breed"/><br/>
-          <button>Submit Breed (Click again for another image)</button>
-        </form>
         <div>
-          <h2>{this.state.breed}</h2>
-          <img
-            src={this.state.breedImgData.message}
-            alt="Breed not available.."
-            width=""
-            height=""
-          />
+          <h1>Dog API</h1>
+        </div>
+        <div>
+          <form onSubmit={this.submit}>
+            <input type ="text" placeholder="Enter breed here" ref="breed"/><br/>
+            <button>Submit Breed (Click again for another image)</button>
+          </form>
+          {this.showImg()}
         </div>
       </div>
     );
