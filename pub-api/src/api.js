@@ -7,7 +7,7 @@ class DogAPI extends Component {
     super(props)
     this.state = {
       breed: "",
-      breedData: {}
+      breedImgData: {}
     }
     this.submit = this.submit.bind(this);
   }
@@ -15,12 +15,12 @@ class DogAPI extends Component {
   submit(event){
     event.preventDefault();
     this.setState({breed: this.refs.breed.value})
-    let url = `https://dog.ceo/api/breed/${this.refs.breed.value}/images/random`
-    fetch(url)
-      .then(data => data.json())
-      .then(data => {
+    let imgURL = `https://dog.ceo/api/breed/${this.refs.breed.value}/images/random`
+    fetch(imgURL)
+      .then(imgData => imgData.json())
+      .then(imgData => {
         this.setState({
-          breedData: data
+          breedImgData: imgData
         })
       })
     if(!this.state.breedData) return <p>Pls wait...</p>
@@ -37,7 +37,7 @@ class DogAPI extends Component {
         <div>
           <h2>{this.state.breed}</h2>
           <img
-            src={this.state.breedData.message}
+            src={this.state.breedImgData.message}
             alt="Breed not available.."
             width=""
             height=""
