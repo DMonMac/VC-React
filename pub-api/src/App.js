@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 
-import API from './api.js';
+import DogAPI from './api.js';
 
 class App extends Component {
   render() {
@@ -13,7 +13,7 @@ class App extends Component {
           <h2>Public APIs</h2>
         </div>
         <div>
-          <API breed="samoyed"></API>
+          <DogAPI breed="samoyed"></DogAPI>
         </div>
       </div>
     );

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 const url = breed => `https://dog.ceo/api/breed/${breed}/images/random`
 
-class API extends Component {
+class DogAPI extends Component {
   constructor(props){
     super(props)
     this.state = {}
@@ -23,7 +23,8 @@ class API extends Component {
     if(!this.state.breedData) return <p>Pls wait...</p>
     return (
       <div>
-        <h1>{this.props.breed}</h1>
+        <h1>Dog API</h1>
+        <h2>{this.props.breed}</h2>
         <img
           src={this.state.breedData.message}
           alt={this.props.breed}
@@ -35,4 +36,4 @@ class API extends Component {
   }
 }
 
-export default API;
+export default DogAPI;
