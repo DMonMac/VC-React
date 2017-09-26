@@ -31,14 +31,14 @@ class DogAPI extends Component {
       <div>
         <h1>Dog API</h1>
         <form onSubmit={this.submit}>
-          <input type ="text" placeholder="Works after pressing twice..." ref="breed"/>
-          <button>Re-click for another image</button>
+          <input type ="text" placeholder="Enter breed here" ref="breed"/><br/>
+          <button>Submit Breed (Click again for another image)</button>
         </form>
         <div>
           <h2>{this.state.breed}</h2>
           <img
             src={this.state.breedData.message}
-            alt={this.state.breed}
+            alt="Breed not available.."
             width=""
             height=""
           />
