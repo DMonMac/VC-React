@@ -13,7 +13,7 @@ class App extends Component {
           <h2>Public APIs</h2>
         </div>
         <div>
-          <DogAPI breed="samoyed"></DogAPI>
+          <DogAPI></DogAPI>
         </div>
       </div>
     );
