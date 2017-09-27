@@ -29,7 +29,7 @@ class ToDoForm extends Component {
   render() {
     return (
       <div>
-        <h2>To Do Form</h2>
+        <h2>Add To Do</h2>
         <input
           onChange={(event) => this.updateText(event)}
           value={this.state.text}

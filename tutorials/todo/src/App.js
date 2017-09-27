@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 import ToDoForm from './Components/ToDo/ToDoForm.js';
 import ToDoList from './Components/ToDo//ToDoList.js';
+import ToDoSearch from './Components/ToDo//ToDoSearch.js';
 
 class App extends Component {
   constructor(props){
@@ -22,6 +23,8 @@ class App extends Component {
     return (
       <div>
         <h1>To Do</h1>
+        <ToDoSearch
+        />
         <ToDoForm
           addNewToDoFunc = {this.addNewToDo.bind(this)}
         />
