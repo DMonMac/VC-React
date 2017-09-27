@@ -10,15 +10,30 @@ class App extends Component {
       todos: ['eat', 'drink', 'play', 'sleep', 'wake up']
     }
   }
+
+  addNewToDo(todo){
+    console.log(todo)
+    this.setState({
+      todos: this.state.todos.concat(todo)
+    })
+  }
+
   render() {
     return (
       <div>
         <h1>To Do</h1>
-        <ToDoForm/>
-        <ToDoList todo_data={this.state.todos}/>
+        <ToDoForm
+          addNewToDoFunc = {this.addNewToDo.bind(this)}
+        />
+        <ToDoList
+          todo_data={this.state.todos}
+
+        />
       </div>
     );
   }
 }
 
 export default App;
+
+// adding () activate function, without it it renders the function...

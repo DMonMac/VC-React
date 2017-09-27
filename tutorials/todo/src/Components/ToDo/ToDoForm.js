@@ -7,15 +7,22 @@ class ToDoForm extends Component {
       text: ''
     }
   }
-  addTask() {
-    console.log('Should add task')
-  }
+  //addTask() {
+  //  console.log('Should add task')
+  //}
 
   updateText(event) {
-    console.log('updateText')
-    console.log(event.target.value)
+    //console.log('updateText')
+    //console.log(event.target.value)
     this.setState({
       text: event.target.value
+    })
+  }
+
+  clearToDoField() {
+    this.props.addNewToDoFunc(this.state.text)
+    this.setState({
+      text:''
     })
   }
 
@@ -27,7 +34,7 @@ class ToDoForm extends Component {
           onChange={(event) => this.updateText(event)}
           value={this.state.text}
         />
-        <button onClick={() => this.addTask()}>Add Task</button>
+        <button onClick={() => this.clearToDoField()}>Add Task</button>
       </div>
     );
   }
