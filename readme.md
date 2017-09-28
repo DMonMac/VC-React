@@ -9,3 +9,4 @@ These are React challenges from the Vivixx Bootcamp.
 4. tutorials - _React lessons and tutorials:_
     - [counter](https://github.com/DMonMac/VC-React/tree/master/tutorials/counter) - _Button that adds 1 to a number_
     - [todo](https://github.com/DMonMac/VC-React/tree/master/tutorials/todo) - _A To-Do list which can add tasks and search tasks_
+    - [HubWars](https://github.com/DMonMac/VC-React/tree/master/tutorials/github_dashboard) - _Compares followers of 2 GitHub accounts_
