@@ -7,15 +7,13 @@ import Judge from './Components/Judge';
 
 
 class App extends Component {
+  // Init
   constructor(props) {
     super(props);
     this.state = {
       player1: {},
       player2: {}
     }
-  }
-  // after render
-  componentDidMount(){
   }
 
   searchPlayer(player_number){

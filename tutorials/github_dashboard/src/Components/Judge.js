@@ -17,7 +17,7 @@ class Judge extends Component {
 
     return (
       <div>
-        <h5>Result: {playersReady? {result} : null}</h5>
+        <h5>Result: {playersReady? result : 'Waiting for players...'}</h5>
       </div>
     );
   }

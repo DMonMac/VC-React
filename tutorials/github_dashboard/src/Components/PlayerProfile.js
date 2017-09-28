@@ -13,8 +13,12 @@ class PlayerProfile extends Component {
     return (
       <CardPanel className="teal lighten-4 black-text">
         <h4>{this.props.player_data.name}</h4>
-        <img src={this.props.player_data.avatar_url} width='100%'/>
-        <p>Location: {this.props.player_data.location}</p>
+        <img
+          src={this.props.player_data.avatar_url}
+          width='100%'
+          className='img-circle'
+        />
+        <p>Followers: {this.props.player_data.followers}</p>
       </CardPanel>
     );
   }
