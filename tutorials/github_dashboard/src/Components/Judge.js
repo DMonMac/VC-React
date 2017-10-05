@@ -11,8 +11,12 @@ class Judge extends Component {
       result = `${this.props.player1.name} wins!!!`
     } else if (this.props.player1.followers < this.props.player2.followers) {
         result = `${this.props.player2.name} wins!!!`
-      } else {
+      } else if (this.props.player1.followers == this.props.player2.followers){
           result = `It's a Tie!!!`
+        } else if (this.props.player1.name == this.props.player2.name){
+            result = `What the heck! Really?!`
+        } else {
+            result = `Waiting for players...`
         }
 
     return (
