@@ -1,4 +1,4 @@
-## **[![React](https://user-images.githubusercontent.com/29721601/31213165-a4201dae-a9d7-11e7-9c6e-66389479471a.png "React")](https://facebook.github.io/react/) VIVIXX CHALLENGES**
+## **[![React](https://user-images.githubusercontent.com/29721601/31213521-a275572e-a9d9-11e7-929d-1d854b01d279.png "React")](https://facebook.github.io/react/) VIVIXX CHALLENGES**
 
 These are React challenges from the Vivixx Bootcamp.
 
