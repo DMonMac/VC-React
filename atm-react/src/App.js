@@ -35,6 +35,7 @@ class CurrBal extends Component {
     return(
       <div>
         Balance: {this.props.bal} PhP
+        <br/><br/>
       </div>
     )
   }
@@ -57,12 +58,12 @@ class Transaction extends Component {
 
   withdraw(e){
     e.preventDefault();
-    if (parseInt(this.refs.amt.value)<=this.state.bal) {
+    if (this.state.bal >= parseInt(this.refs.amt.value)) {
       this.setState({bal: this.state.bal - parseInt(this.refs.amt.value)});
       alert("Withdrew "+ this.refs.amt.value + " PhP");
     } else {
-        alert("Insufficient balance");
-    }
+        alert("Insufficient Balance");
+      }
   }
 
   render(){
@@ -78,18 +79,17 @@ class Transaction extends Component {
         <form>
           <div className="form-group">
             <label></label>
-              <input
-                type="number"
-                min="0"
-                placeholder="Enter PhP amount here"
-                ref="amt"
-                className = "form-control"
-              />
+            <input
+              type="number"
+              min="0"
+              placeholder="Enter PhP amount here"
+              ref = "amt"
+              className = "form-control"
+            />
           </div>
-            <button onClick={this.deposit}>Deposit</button>
-            <button onClick={this.withdraw}>Withdraw</button>
+          <button onClick={this.deposit}>Deposit</button>
+          <button onClick={this.withdraw}>Withdraw</button>
         </form>
-
       </div>
     )
   }
