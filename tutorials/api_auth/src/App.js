@@ -9,10 +9,10 @@ class App extends Component {
     this.state = {
       apiData: {}
     }
-    this.showAPIjson = this.showAPIjson.bind(this);
+    //this.callAPIjson = this.callAPIjson.bind(this);
   }
 
-  showAPIjson(){ // note: if you add () it executes the function, without it it copies the cintent into the return
+  componentDidMount(){ // note: if you add () it executes the function, without it it copies the cintent into the return
     let url = "http://api.demo.muulla.com/cms/merchant/all/active/10/1"
     fetch(url, {
       method: 'get',
@@ -25,6 +25,7 @@ class App extends Component {
         this.setState({
           apiData: apiJSON
         })
+        console.log(this.state.apiData)
       });
   }
   render() {
@@ -34,10 +35,12 @@ class App extends Component {
           <img src={logo} className="App-logo" alt="logo" />
           <h1 className="App-title">Authorized API</h1>
         </header>
-        {this.showAPIjson()}
       </div>
     );
   }
 }
 
 export default App;
+
+//{this.callAPIjson()}
+//{console.log(this.state.apiData)}
